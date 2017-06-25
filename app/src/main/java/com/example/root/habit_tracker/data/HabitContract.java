@@ -22,13 +22,13 @@ public class HabitContract {
         /**
          * Activities constants
          */
-        public static final String ACTIVITY_HABIT_READING = "reading";
-        public static final String ACTIVITY_HABIT_TRAINING = "training";
-        public static final String ACTIVITY_HABIT_CODING = "coding";
-        public static final String ACTIVITY_HABIT_YOGA = "yoga";
-        public static final String ACTIVITY_HABIT_TAKING_MEDICATIONS = "taking medications";
-        public static final String ACTIVITY_HABIT_MEDITATION = "meditation";
-        public static final String ACTIVITY_HABIT_DINNER = "making dinner";
+        public static final int ACTIVITY_HABIT_READING = 1;
+        public static final int ACTIVITY_HABIT_TRAINING = 2;
+        public static final int ACTIVITY_HABIT_CODING = 3;
+        public static final int ACTIVITY_HABIT_YOGA = 4;
+        public static final int ACTIVITY_HABIT_TAKING_MEDICATIONS = 5;
+        public static final int ACTIVITY_HABIT_MEDITATION = 6;
+        public static final int ACTIVITY_HABIT_DINNER = 7;
 
     }
 }
