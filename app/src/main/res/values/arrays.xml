@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_activity_options">
+        <item>@string/activity_reading</item>
+        <item>@string/activity_coding</item>
+        <item>@string/activity_training</item>
+        <item>@string/activity_medications</item>
+        <item>@string/activity_yoga</item>
+        <item>@string/activity_meditation</item>
+        <item>@string/activity_dinner</item>
+        <item>@string/activity_no_activity</item>
+    </string-array>
+</resources>

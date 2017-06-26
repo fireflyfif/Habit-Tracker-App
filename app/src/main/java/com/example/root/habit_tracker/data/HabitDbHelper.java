@@ -32,14 +32,16 @@ public class HabitDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create a String that contains the SQL statement to create the habits table
         String SQL_CREATE_HABIT_TABLE = "CREATE TABLE " + HabitEntry.TABLE_NAME + " ("
-                + HabitEntry.COLUMN_HABIT_TIME + " INTEGER NOT NULL DEFAULT (strftime('%s', 'now')), "
-                + HabitEntry.COLUMN_HABIT_ACTIVITY + " INTEGER, "
+                + HabitEntry.COLUMN_HABIT_TIME + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+                + HabitEntry.COLUMN_HABIT_ACTIVITY + " TEXT, "
                 + HabitEntry.COLUMN_HABIT_NOTES + " TEXT);";
 
         Log.v("HabitDbHelper", "SQL statement for creating the table " + SQL_CREATE_HABIT_TABLE);
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_HABIT_TABLE);
+
+        // HabitEntry.COLUMN_HABIT_TIME + " INTEGER NOT NULL DEFAULT (strftime('%s', 'now')), "
     }
 
     @Override
