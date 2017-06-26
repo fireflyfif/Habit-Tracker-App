@@ -30,6 +30,8 @@ import static com.example.root.habit_tracker.data.HabitContract.HabitEntry.*;
 
 public class HabitActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = "HabitActivity";
+
     /**
      * Database helper that will provide and stored in the app.
      */
@@ -74,6 +76,7 @@ public class HabitActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     insertDummyHabit();
                     displayDatabaseInfo();
+                    readData();
                 }
             });
         }
@@ -86,6 +89,7 @@ public class HabitActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     insertHabit();
                     displayDatabaseInfo();
+                    readData();
                 }
             });
         }
@@ -223,6 +227,61 @@ public class HabitActivity extends AppCompatActivity {
     }
 
     /**
+     * Read data from the database
+     * @return cursor
+     */
+    private Cursor readData() {
+        // To access the database, instantiate the subclass of SQLiteOpenHelper
+        // and pass the context, which is the current activity.
+        mDbHelper = new HabitDbHelper(this);
+
+        // Create and/or open a database to read from it
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+        // Define a projection that specifies which columns from the database
+        // will be used after this query.
+        String[] projection = {
+                COLUMN_HABIT_TIME,
+                COLUMN_HABIT_ACTIVITY,
+                COLUMN_HABIT_NOTES
+        };
+
+        Cursor cursor = db.query(
+                TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        try {
+            // Figure out the index of each column
+            int timeColumnIndex = cursor.getColumnIndex(COLUMN_HABIT_TIME);
+            int activityColumnIndex = cursor.getColumnIndex(COLUMN_HABIT_ACTIVITY);
+            int notesColumnIndex = cursor.getColumnIndex(COLUMN_HABIT_NOTES);
+
+            // Iterate through all the returned rows in the cursor
+            while (cursor.moveToNext()) {
+                // Use that index to extract the String or int value of the word
+                // at the current row the cursor is on.
+                String currentTime = cursor.getString(timeColumnIndex);
+                int currentActivity = cursor.getInt(activityColumnIndex);
+                String currentNotes = cursor.getString(notesColumnIndex);
+
+                Log.v(LOG_TAG, "Here are all the activities that this table contains:" +
+                        "\n" + currentTime + " - " + currentActivity + " - " + currentNotes);
+            }
+        } finally {
+            // Always close the cursor when done reading from it. This releases all its
+            // resources and makes it invalid.
+            cursor.close();
+        }
+        return cursor;
+    }
+
+    /**
      * Helper method to format the date and time
      *
      * @return datetime
@@ -231,7 +290,6 @@ public class HabitActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();
-        Log.v("HabitActivity", "New row ID " + dateFormat);
         return dateFormat.format(date);
     }
 
@@ -254,7 +312,7 @@ public class HabitActivity extends AppCompatActivity {
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(TABLE_NAME, null, values);
-        Log.v("HabitActivity", "New row ID " + newRowId);
+        Log.v(LOG_TAG, "New row ID from the dummy data " + newRowId);
     }
 
     /**
@@ -279,6 +337,6 @@ public class HabitActivity extends AppCompatActivity {
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(TABLE_NAME, null, valuesOfUser);
 
-        Log.v("HabitActivity", "New row ID " + newRowId);
+        Log.v(LOG_TAG, "New row ID from the user input " + newRowId);
     }
 }
