@@ -22,13 +22,14 @@ public class HabitContract {
         /**
          * Activities constants
          */
-        public static final int ACTIVITY_HABIT_READING = 0;
-        public static final int ACTIVITY_HABIT_CODING = 1;
-        public static final int ACTIVITY_HABIT_TRAINING = 2;
-        public static final int ACTIVITY_HABIT_TAKING_MEDICATIONS = 3;
-        public static final int ACTIVITY_HABIT_YOGA = 4;
-        public static final int ACTIVITY_HABIT_MEDITATION = 5;
-        public static final int ACTIVITY_HABIT_DINNER = 6;
-        public static final int ACTIVITY_HABIT_NO_ACTIVITY = 7;
+        public static final int ACTIVITY_HABIT_NO_ACTIVITY = 0;
+        public static final int ACTIVITY_HABIT_READING = 1;
+        public static final int ACTIVITY_HABIT_CODING = 2;
+        public static final int ACTIVITY_HABIT_TRAINING = 3;
+        public static final int ACTIVITY_HABIT_TAKING_MEDICATIONS = 4;
+        public static final int ACTIVITY_HABIT_YOGA = 5;
+        public static final int ACTIVITY_HABIT_MEDITATION = 6;
+        public static final int ACTIVITY_HABIT_DINNER = 7;
+
     }
 }

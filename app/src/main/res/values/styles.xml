@@ -8,4 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="categoryTextView" parent="AppTheme">
+        <item name="android:layout_width">@dimen/width_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingTop">@dimen/padding_16dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+    <style name="activitySpinner" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/spinner_height</item>
+        <item name="android:paddingRight">@dimen/padding_16dp</item>
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+
+    <style name="buttonsAddData" parent="AppTheme">
+        <item name="android:layout_width">@dimen/width_0dp</item>
+        <item name="android:layout_height">@dimen/buttons_height_60dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/padding_16dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

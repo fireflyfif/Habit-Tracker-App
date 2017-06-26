@@ -113,7 +113,9 @@ public class HabitActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
-                    if (selection.equals(getString(R.string.activity_reading))) {
+                    if (selection.equals(getString(R.string.activity_no_activity))) {
+                        mActivity = HabitEntry.ACTIVITY_HABIT_NO_ACTIVITY; // No Activity
+                    } else if (selection.equals(getString(R.string.activity_reading))) {
                         mActivity = HabitEntry.ACTIVITY_HABIT_READING; // Reading
                     } else if (selection.equals(getString(R.string.activity_coding))) {
                         mActivity = HabitEntry.ACTIVITY_HABIT_CODING; // Coding
@@ -125,18 +127,16 @@ public class HabitActivity extends AppCompatActivity {
                         mActivity = HabitEntry.ACTIVITY_HABIT_YOGA; // Yoga
                     } else if (selection.equals(getString(R.string.activity_meditation))) {
                         mActivity = HabitEntry.ACTIVITY_HABIT_MEDITATION; // Meditation
-                    } else if (selection.equals(getString(R.string.activity_dinner))) {
-                        mActivity = HabitEntry.ACTIVITY_HABIT_DINNER; // Making Dinner
                     } else {
-                        mActivity = HabitEntry.ACTIVITY_HABIT_NO_ACTIVITY; // No Activity
+                        mActivity = HabitEntry.ACTIVITY_HABIT_DINNER; // Making Dinner
                     }
                 }
             }
-            // Because AdapterView is an abstract class, onNothingSelected must be defined
 
+            // Because AdapterView is an abstract class, onNothingSelected must be defined
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mActivity = 7; // No Activity
+                mActivity = 0; // No Activity
             }
         });
     }
@@ -154,7 +154,7 @@ public class HabitActivity extends AppCompatActivity {
     private void displayDatabaseInfo() {
         // To access the database, instantiate the subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
-        HabitDbHelper mDbHelper = new HabitDbHelper(this);
+        mDbHelper = new HabitDbHelper(this);
 
         // Create and/or open a database to read from it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -192,9 +192,10 @@ public class HabitActivity extends AppCompatActivity {
             displayDatabase.append(COLUMN_HABIT_TIME + " - " +
                     COLUMN_HABIT_ACTIVITY + " - " +
                     COLUMN_HABIT_NOTES + "\n");
-            displayDatabase.append("The Activities are as follow\n" +
-                    "0 - Reading; " + "1 - Coding; " + "2 - Training; " + "3 - Taking Medications; " +
-                    "4 - Yoga; " + "5 - Meditation; " + "6 - Making Dinner; " + "7 - No Activity;" + "\n");
+            displayDatabase.append("\nThe Activities are as follow:\n" +
+                    "0 - No Activity; " + "1 - Reading; " + "2 - Coding; " + "3 - Training; " +
+                    "4 - Taking Medications; " + "5 - Yoga; " + "6 - Meditation; " +
+                    "7 - Making Dinner;" + "\n");
 
             // Figure out the index of each column
             int timeColumnIndex = cursor.getColumnIndex(COLUMN_HABIT_TIME);
@@ -238,8 +239,6 @@ public class HabitActivity extends AppCompatActivity {
      * Insert and save new habit into the database
      */
     private void insertDummyHabit() {
-        String notesString = mAddNotes.getText().toString().trim();
-
         // Create the database helper
         HabitDbHelper mDbHelper = new HabitDbHelper(this);
 
@@ -250,7 +249,7 @@ public class HabitActivity extends AppCompatActivity {
         // and populate the values with some dummy data
         ContentValues values = new ContentValues();
         values.put(COLUMN_HABIT_TIME, getDateTime());
-        values.put(COLUMN_HABIT_ACTIVITY, 3);
+        values.put(COLUMN_HABIT_ACTIVITY, 4);
         values.put(COLUMN_HABIT_NOTES, "Today I was lazy.");
 
         // Insert the new row, returning the primary key value of the new row

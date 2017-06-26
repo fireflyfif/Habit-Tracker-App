@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Habit-Tracker</string>
+    <string name="app_name">Habit Tracker</string>
     <!-- These are the options displayed in the activity drop-down Spinner -->
+    <string name="activity_no_activity">No Activity</string>
     <string name="activity_reading">Reading</string>
     <string name="activity_training">Training</string>
     <string name="activity_coding">Coding</string>
@@ -8,5 +9,12 @@
     <string name="activity_medications">Taking Medications</string>
     <string name="activity_meditation">Meditation</string>
     <string name="activity_dinner">Making Dinner</string>
-    <string name="activity_no_activity">No Activity</string>
+
+    <string name="select_activity_text">Select Activity</string>
+    <string name="add_notes_text">Add Notes</string>
+    <string name="edit_text_hint">Your Notes</string>
+
+    <string name="button_dummy_data">Add Dummy Data</string>
+    <string name="button_user_data">Add Activity</string>
+
 </resources>

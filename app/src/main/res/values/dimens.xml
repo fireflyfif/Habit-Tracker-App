@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_0dp">0dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="spinner_height">48dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="margin_buttons_30dp">30dp</dimen>
+    <dimen name="buttons_height_60dp">60dp</dimen>
+</resources>

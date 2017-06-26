@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/padding_16dp"
     tools:context="com.example.root.habit_tracker.HabitActivity">
 
     <LinearLayout
@@ -14,13 +14,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
-            android:paddingTop="16dp"
-            android:text="Select Activity"
-            android:textAppearance="?android:textAppearanceSmall" />
+            style="@style/categoryTextView"
+            android:text="@string/select_activity_text" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -30,10 +25,7 @@
 
             <Spinner
                 android:id="@+id/spinner_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:paddingRight="16dp"
-                android:spinnerMode="dropdown" />
+                style="@style/activitySpinner" />
 
         </LinearLayout>
 
@@ -45,26 +37,21 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
-            android:paddingTop="16dp"
-            android:text="Add Notes"
-            android:textAppearance="?android:textAppearanceSmall" />
+            style="@style/categoryTextView"
+            android:text="@string/add_notes_text" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="vertical"
-            android:paddingLeft="4dp">
+            android:paddingLeft="@dimen/padding_4dp">
 
             <EditText
                 android:id="@+id/add_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Your Notes"
+                android:hint="@string/edit_text_hint"
                 android:inputType="textCapSentences" />
 
         </LinearLayout>
@@ -74,26 +61,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/margin_buttons_30dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/add_database"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:text="Add Dummy Data" />
+            style="@style/buttonsAddData"
+            android:text="@string/button_dummy_data" />
 
         <Button
             android:id="@+id/add_activity_button"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:text="Add Activity" />
+            style="@style/buttonsAddData"
+            android:text="@string/button_user_data" />
 
     </LinearLayout>
 
@@ -104,9 +83,7 @@
         <TextView
             android:id="@+id/database_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            tools:text="The Habit Database" />
+            android:layout_height="wrap_content" />
 
     </ScrollView>
 
